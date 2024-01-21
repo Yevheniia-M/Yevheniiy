@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+    --color-header: #4b433f;
+    --color-text: #888787;
+    --gallery-gap: calc(var(--index) * 10);
+}
+html, body {
+    scroll-behavior: smooth;
+    overscroll-behavior: contain; /* Щоб уникнути ефекту зайвого прокручування за границі */
+}
+
+@font-face {
+    font-family: raleway-c;
+    src: url(../fonts/raleway-regular.woff2);
+}
+@font-face {
+    font-family: outfit-c;
+    src: url(../fonts/outfit-regular.woff2);
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: outfit-c;
+}
+/* will change*/
+.content, .hero, .main-header, .gallery > * {
+    will-change: transform;
+}
+body {
+    background-color: rgb(240, 235, 235);
+    color: #fafafa;
+    font-family: raleway-c;
+    overflow-x: hidden;
+}
+.hero-section {
+    background-color: rgb(2, 2, 2);
+}
+.hero {
+    
+    width: calc(var(--index) * 25);
+    position: absolute;
+    left: 55vw;
+    top: -2vh;
+    z-index: 0;
+}
+.main-header {
+    height: 100vh;
+}
+.container {
+padding: 0 7vw;
+}
+.main-title {
+    font-size: calc(var(--index) * 8);
+    position: absolute;
+    width: min-content;
+    bottom: 12vh;
+    line-height: .9;
+}
+.gallery {
+    display: flex;
+    padding: calc(var(--index) * 8) 0;
+
+}
+.gallery > * {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#cursor-ring {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #857e7e;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    mix-blend-mode: difference; /* optional, for better visibility */
+    transition: transform 0.3s ease, border 0.3s ease, opacity 0.3s ease;
+}
+
+#cursor-ring.active {
+    transform: scale(1.5);
+    border-width: 3px;
+    opacity: 0.5;
+}
+
+img {
+    width: 100%; /* Змініть на бажаний розмір */
+    height: auto; 
+    transition: transform 0.3s ease; /* Додаємо плавну анімацію при зміні розміру */
+    
+}
+img.clicked {
+    transform: scale(1.5); /* Збільшення на 50% (можете змінити значення за потребою) */
+}
+.gallery__item {
+    max-width: calc(var(--index) * 18);
+    margin-bottom: var(--gallery-gap);
+    max-height: 180vh;
+    border-radius: 8px;
+}
+
+.gallery__left {
+    margin-top: calc(var(--gallery-gap) * 1.75);
+}
+
+.gallery__right .gallery__item  {
+    margin-bottom: 0;
+    margin-top: var(--gallery-gap);
+
+}
+
+.text-block {
+color: var(--color-text);
+position: relative;
+}
+.text-block__h {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    color: var(--color-header);
+    margin-bottom: 1.5rem;
+}
+.text-block__p {
+    line-height: 1.75;
+}
+header {
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: left;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.burger-menu {
+    display: none;
+   
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 6px 0;
+}
+
+.mobile-navigation {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out; /* Анімація випадання */
+}
+.mobile-navigation.show {
+    max-height: 1000px; /* Значення, яке перевищує висоту вашого списку */
+}
+
+
+ .burger-menu {
+        display: block;
+    }
+ .navigation {
+        list-style: none;
+        padding: 0;
+        margin: 0; /* Додайте margin: 0, щоб усунути зайві відступи від списку */
+    }
+    
+
+.navigation li {
+        margin: 10px 0;
+    }
+
+.mobile-navigation {
+        display: block;
+    }
+.navigation a {
+    text-decoration: none; /* Відключення підкреслення для гіперпосилань */
+    color: var(--color-text);
+    font-family: outfit-c;
+    font-size: 2rem;
+}
+
+footer {
+    background-color: #cac6c663; 
+    color: #fff; 
+    padding: 8px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.container-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact img {
+    margin: 0 35px;
+    width: 30px; 
+    height: 30px; 
+    transition: transform 0.3s ease;
+    
+}
+
+img:hover {
+    transform: scale(1.4); /* Збільшення на 10% (можете змінити значення за потребою) */
+}
+
+@media (max-width:380px){
+    .hero-section {
+        height: 30vh;
+    }
+    .main-header {
+        display: flex;
+        height: 30vh;
+        font-size: 2vw;
+        justify-content: left;
+    }
+    #home {
+        display: none;
+    }
+    h1, h2, p {
+        transform: scale(0.8); 
+        display: grid;
+    }
+    .main-title {
+        font-size: 12em;
+    }
+    .gallery{
+        column-gap: 20px;
+        
+    }
+    .gallery__item {
+        border-radius: 3px;
+
+    }
+    .navigation a {
+        font-size: small;
+    }
+
+}
+
+@media (min-width:381px) and (max-width: 600px) {
+    .hero-section {
+        height: 30vh;
+    }
+    .main-header {
+        display: flex;
+        height: 30vh;
+        font-size: 2vw;
+        justify-content: left;
+    }
+    #home {
+        display: none;
+    }
+    h1, h2, p {
+        transform: scale(0.9); 
+        display: grid;
+    }
+    .main-title {
+        font-size: 10em;
+    }
+    .gallery{
+        column-gap: 30px;
+        
+    }
+    .gallery__item {
+        border-radius: 5px;
+
+    }
+    .navigation a {
+        font-size: small;
+    }
+
+}
+@media (min-width:601px) and (max-width: 1000px) {
+    .gallery{
+        column-gap: 40px;
+        
+    }
+
+}
+ /* #cursor-ring {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 40px;
+    height: 40px;
+    mix-blend-mode: difference;
+    background-color: #888787;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: scale 100ms;
+}
+#cursor-ring.active {
+    scale: 0.75;
+}
+ */
+ .follow-cursor {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    transform: translateY(-50%) translateX(-50%); /* центрируем кружок */
+    position: absolute; /* задаём абсолютное позиционирование, чтобы элемент не влиял на остальные элементы и его можно было бы позиционировать следом за курсором */
+    z-index: 999; /* чтобы элемент был над остальными элементами */
+    pointer-events: none; /* чтобы сквозь элемент можно было взаимодействовать с элементами, находящимися под ним */
+    transition: width 0.64s, height 0.64s, border-radius 0.64s, background 0.64s;
+  }
+  
+  /* Активный класс для кружка при наведении на ссылку */
+  .follow-cursor_active {
+    height: 80px;
+    width: 80px;
+    border-width: 2px;
+    background: rgba(161, 161, 161, 0.32);
+  }
+  
+  /* Скрываем декоративный элемент при ширине браузера меньше 992px 
+  @media (max-width: 991.98px) {
+    .follow-cursor {
+      display: none;
+    }*/
+  

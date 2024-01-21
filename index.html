@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="libs/gsap/gsap.min.js" defer></script>
+    <script src="libs/gsap/ScrollTrigger.min.js" defer></script>
+    <script src="libs/gsap/ScrollSmoother.min.js" defer></script>
+    <script src="https://unpkg.com/smooth-scroll-into-view-if-needed" defer></script>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <div class="follow-cursor"></div> 
+        <div class="wrapper">
+            <div class="content">
+                <header class="hero-section">
+                    <nav>
+                        <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                                <div class="burger-menu">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            <nav class="mobile-navigation">
+                                <ul class="navigation">
+                                    <li><a href="#home">Home</a></li>
+                                    <li><a href="#portfolio">Portfolio</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                </ul>
+                            </nav>
+                            </div>
+                        </div>
+                        </div>
+                    </nav>
+                    <img data-speed=".6" class="hero" src="img/17179633.png" alt="" id="home">
+                    <div class="container">
+                        <div data-speed="1" class="main-header">
+                            <h1 class="main-title">Creative space</h1>
+                        </div>
+                    </div>
+                </header>
+                <div class="portfolio">
+                    
+                    <div class="container" id="portfolio">
+                        <main class="gallery">
+                            <div data-speed=".9" class="gallery__left">
+                                <img class="gallery__item" src="img/arch/1.jpg" alt="1" >
+                                <img  class="gallery__item" src="img/arch/2.jpg" alt="2">
+                                <div class="text-block gallery__item">
+                                    <h2 class="text-block__h">Creative floating scroll with amazing parallax effect</h2>
+                                    <p class="text-block__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor amount scrolling.</p>
+                                </div>
+                                <img  class="gallery__item" src="img/arch/3.jpg" alt="3">
+                                <div class="text-block gallery__item">
+                                    <h2 class="text-block__h">Creative floating scroll with amazing parallax effect</h2>
+                                    <p class="text-block__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor amount scrolling.</p>
+                                </div>
+                                <img class="gallery__item" src="img/arch/4.jpg" alt="alt">
+                                <img class="gallery__item" src="img/arch/5.jpg" alt="alt">
+                                <img class="gallery__item" src="img/arch/6.jpg" alt="alt">
+                                <div class="text-block gallery__item">
+                                    <h2 class="text-block__h">Creative floating scroll with amazing parallax effect</h2>
+                                    <p class="text-block__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor amount scrolling.</p>
+                                </div>
+                            </div>
+                            <div data-speed=".9" class="gallery__right">
+                                <img class="gallery__item" src="img/arch/10.jpg" alt="alt">
+                                <img class="gallery__item" src="img/arch/11.jpg" alt="alt">
+                                <div class="text-block gallery__item">
+                                    <h2 class="text-block__h">Creative floating scroll with amazing parallax effect</h2>
+                                    <p class="text-block__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor amount scrolling.</p>
+                                </div>
+                                <img class="gallery__item" src="img/arch/12.jpg" alt="alt"><img class="gallery__item" src="img/arch/7.jpg" alt="alt">
+                                <div class="text-block gallery__item">
+                                    <h2 class="text-block__h">Creative floating scroll with amazing parallax effect</h2>
+                                    <p class="text-block__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor amount scrolling.</p>
+                                </div>
+                                <img class="gallery__item" src="img/arch/8.jpg" alt="alt">
+                                <img class="gallery__item" src="img/arch/9.jpg" alt="alt">
+                            </div>
+                        
+                        
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container-footer">
+                <div class="contact" id="contact">
+                    <a href="tel:+380973327548">
+                        <img src="img/phone-vibrate.svg" alt="phone">
+                    </a>
+                    <a href="https://www.linkedin.com/in/evgen-baranenko-b50b84199/" target="_blank">
+                        <img src="img/linkedin.svg" alt="linkedin">
+                    </a>
+                    <a href="https://t.me/evgenbaranenko" target="_blank">
+                        <img src="img/telegram.svg" alt="telegram">
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+            const followCursor = () => { // объявляем функцию followCursor
+            const el = document.querySelector('.follow-cursor') // ищем элемент, который будет следовать за курсором
+
+            window.addEventListener('mousemove', e => { // при движении курсора
+                const target = e.target // определяем, где находится курсор
+                if (!target) return
+
+                if (target.closest('a')) { // если курсор наведён на ссылку
+                el.classList.add('follow-cursor_active') // элементу добавляем активный класс
+                } else { // иначе
+                el.classList.remove('follow-cursor_active') // удаляем активный класс
+                }
+
+                el.style.left = e.pageX + 'px' // задаём элементу позиционирование слева
+                el.style.top = e.pageY + 'px' // задаём элементу позиционирование сверху
+            })
+            }
+
+            followCursor() // вызываем функцию followCursor
+
+            })
+
+        </script>
+  
+ 
+
+</body>
+</html>
